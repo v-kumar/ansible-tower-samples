@@ -5,21 +5,10 @@
       debug:
         msg: "Hello World!"
 
+    - name: Describe EC2 instances
+      amazon.aws.ec2_metadata_facts:
+
     - name: Display all variables/facts known for a host
       debug:
         var: hostvars[inventory_hostname]
-
-    - name: Describe EC2 instances
-      community.aws.ec2_instance_info:
-        region: us-east-1
-        filters:
-          instance-state-name: running
-      register: ec2_info
-
-    - name: Output EC2 instance facts
-      debug:
-        var: ec2_info.instances
-
-    - name: Display shell output
-      shell: aws sts get-caller-identity
 
