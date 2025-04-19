@@ -5,3 +5,10 @@
       debug:
         msg: "Hello World!"
 
+    - name: Display all variables/facts known for a host
+      debug:
+        var: hostvars[inventory_hostname]
+
+    - name: Display shell output
+      shell: aws sts get-caller-identity
+
